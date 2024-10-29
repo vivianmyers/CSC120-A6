@@ -2,11 +2,22 @@
 
 import java.util.ArrayList;
 
+/**
+ * The House class extends the Building class and adds functionality involving
+ * dining rooms and residents.
+ */
 public class House extends Building {
   
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
 
+  /**
+   * House Constructor
+   * @param name is the building name
+   * @param address is the building address
+   * @param nFloors is the number of floors
+   * @param hasDining indicates whether the house has a dining room
+   */
   public House(String name, String address, int nFloors, boolean hasDining) {
     super(name, address, nFloors);
     this.residents = new ArrayList<String>();
@@ -15,20 +26,36 @@ public class House extends Building {
     System.out.println("You have built a house: 🏠");
   }
 
-  //getters
+  /**
+   * Indicates if the house has a dining room
+   * @return True if it does, flase otherwise
+   */
   public boolean hasDiningRoom(){
     return hasDiningRoom;
-  };
+  }
+
+  /**
+   * Returns the size of the residents list
+   * @return size of residents
+   */
   public int nResidents(){
     return residents.size();
-  };
+  }
 
-  //methods
-
+  
+  /**
+   * Checks if a person is in the residents list
+   * @param person is the person we are looking for in the residents list
+   * @return True if the person is in residents, false otherwise
+   */
   public boolean isResident(String person){
     return residents.contains(person);
   }
 
+  /**
+   * Adds a new resident to the resident list if they dont already live there
+   * @param name of the person we would like to add
+   */
   public void moveIn(String name){
     try{
       if(!isResident(name)){
@@ -41,6 +68,11 @@ public class House extends Building {
     }
   }
 
+  /**
+   * Removes a person from residents if they are on the list
+   * @param name of the person we want to remove
+   * @return the name of the person removed
+   */
   public String moveOut(String name){
     try{
       if(isResident(name)){
@@ -53,7 +85,10 @@ public class House extends Building {
     }
     return name;
   }
-
+  /**
+   * Main method for testing
+   * @param args
+   */
   public static void main(String[] args) {
     House house = new House("myHouse", "948 New Boston", 2, true);
     house.moveIn("Vivian");
